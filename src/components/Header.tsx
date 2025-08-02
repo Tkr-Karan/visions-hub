@@ -79,7 +79,7 @@ const Header = () => {
                   to={item.href}
                   className={`block px-3 py-2 text-base font-medium transition-colors hover:text-primary ${
                     isActive(item.href)
-                      ? "text-primary bg-secondary"
+                      ? "text-primary bg-muted"
                       : "text-muted-foreground"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
