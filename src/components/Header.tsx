@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import AMAYAAS_LOGO from "@/assets/amayaas-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,7 +25,9 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">A</span>
+              <span className="text-primary-foreground font-bold text-lg">
+                <img src={AMAYAAS_LOGO} alt="Logo" width={20} height={20} />
+              </span>
             </div>
             <span className="font-bold text-xl text-foreground">Amayaas</span>
           </Link>
@@ -36,9 +39,7 @@ const Header = () => {
                 key={item.name}
                 to={item.href}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(item.href)
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                  isActive(item.href) ? "text-primary" : "text-muted-foreground"
                 }`}
               >
                 {item.name}
@@ -51,9 +52,7 @@ const Header = () => {
             <Button variant="outline" size="sm">
               Get Quote
             </Button>
-            <Button size="sm">
-              Contact Us
-            </Button>
+            <Button size="sm">Contact Us</Button>
           </div>
 
           {/* Mobile Menu Button */}
