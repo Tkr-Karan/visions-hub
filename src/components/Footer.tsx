@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">GP</span>
+                <span className="text-primary-foreground font-bold text-lg">A</span>
               </div>
-              <span className="font-bold text-xl">GypsumPro</span>
+              <span className="font-bold text-xl">Amayaas</span>
             </div>
             <p className="text-sm text-background/80">
               Leading provider of premium gypsum partition solutions for modern commercial and residential spaces.
@@ -82,7 +82,7 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-primary" />
                 <span className="text-sm text-background/80">
-                  info@gypsumpro.com
+                  info@amayaas.com
                 </span>
               </div>
               <div className="flex items-center space-x-3">
@@ -98,7 +98,7 @@ const Footer = () => {
         <div className="border-t border-background/20 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-background/60">
-              © 2024 GypsumPro. All rights reserved.
+              © 2024 Amayaas. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="#" className="text-sm text-background/60 hover:text-background transition-colors">

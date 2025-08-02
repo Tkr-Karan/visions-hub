@@ -58,7 +58,7 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email Us",
-      details: ["info@gypsumpro.com", "sales@gypsumpro.com", "support@gypsumpro.com"],
+      details: ["info@amayaas.com", "sales@amayaas.com", "support@amayaas.com"],
       action: "Send Email"
     },
     {

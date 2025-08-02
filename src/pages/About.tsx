@@ -72,11 +72,11 @@ const About = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                 About{" "}
                 <span className="bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                  GypsumPro
+                  Amayaas
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
-                With over 15 years of experience in the partition industry, GypsumPro has been 
+                With over 15 years of experience in the partition industry, Amayaas has been 
                 transforming spaces with innovative gypsum partition solutions. We combine traditional 
                 craftsmanship with modern technology to deliver exceptional results.
               </p>

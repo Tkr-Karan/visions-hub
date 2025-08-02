@@ -134,7 +134,7 @@ const Products = () => {
               All Products Include
             </h2>
             <p className="text-lg text-muted-foreground">
-              Every GypsumPro product comes with these standard benefits
+              Every Amayaas product comes with these standard benefits
             </p>
           </div>
           
