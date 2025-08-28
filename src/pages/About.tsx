@@ -29,37 +29,31 @@ const About = () => {
 
   const team = [
     {
-      name: "John Smith",
+      name: "Bhawna Rathore",
       position: "CEO & Founder",
-      experience: "20+ years",
+      experience: "7+ years",
       description: "Visionary leader with extensive experience in construction and partition systems."
     },
     {
-      name: "Sarah Johnson",
+      name: "Hardik Sxena",
       position: "Head of Operations",
-      experience: "15+ years",
+      experience: "6+ years",
       description: "Operations expert ensuring smooth project execution and quality delivery."
     },
     {
-      name: "Mike Wilson",
+      name: "Harsh Saxena",
       position: "Lead Installation Manager",
-      experience: "18+ years",
+      experience: "3+ years",
       description: "Technical specialist overseeing all installation projects and quality control."
     },
-    {
-      name: "Emma Davis",
-      position: "Design Consultant",
-      experience: "12+ years",
-      description: "Creative designer helping clients achieve their vision with innovative solutions."
-    }
   ];
 
   const milestones = [
-    { year: "2008", event: "Company Founded", description: "Started as a small family business" },
-    { year: "2012", event: "100+ Projects", description: "Reached our first major milestone" },
-    { year: "2016", event: "Regional Expansion", description: "Expanded services across the region" },
-    { year: "2020", event: "Quality Certification", description: "Achieved ISO quality certification" },
-    { year: "2024", event: "500+ Projects", description: "Celebrating over 500 successful projects" }
+    { year: "2025", event: "Company Founded", description: "Started as a small family business" },
+    // { year: "2025", event: "100+ Projects", description: "Reached our first major milestone" },
+    // { year: "2016", event: "Regional Expansion", description: "Expanded services across the region" },
+    // { year: "2020", event: "Quality Certification", description: "Achieved ISO quality certification" },
+    { year: "2025", event: "30+ Projects", description: "Celebrating over 30 successful projects" }
   ];
 
   return (
@@ -82,11 +76,11 @@ const About = () => {
               </p>
               <div className="grid grid-cols-2 gap-6 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">500+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">30+</div>
                   <div className="text-muted-foreground">Projects Completed</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">1+</div>
                   <div className="text-muted-foreground">Years Experience</div>
                 </div>
               </div>
@@ -156,7 +150,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="text-center hover:shadow-soft transition-shadow duration-300">
                 <CardHeader>

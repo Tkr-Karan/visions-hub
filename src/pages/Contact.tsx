@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,14 +22,15 @@ const Contact = () => {
     phone: "",
     company: "",
     projectType: "",
-    message: ""
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      description:
+        "Thank you for your inquiry. We'll get back to you within 24 hours.",
     });
     setFormData({
       name: "",
@@ -31,14 +38,16 @@ const Contact = () => {
       phone: "",
       company: "",
       projectType: "",
-      message: ""
+      message: "",
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -46,27 +55,31 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6 text-primary" />,
       title: "Visit Our Office",
-      details: ["123 Business District", "City, State 12345", "United States"],
-      action: "Get Directions"
+      details: ["Gurugram (Haryana)", "Farrukhabad (Uttar Pradesh)"],
+      action: "Get Directions",
     },
     {
       icon: <Phone className="h-6 w-6 text-primary" />,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 123-4568", "Toll-Free: 1-800-GYPSUM"],
-      action: "Call Now"
+      details: ["+91 8707696312", "+91 8077901223"],
+      action: "Call Now",
     },
     {
       icon: <Mail className="h-6 w-6 text-primary" />,
       title: "Email Us",
-      details: ["info@amayaas.com", "sales@amayaas.com", "support@amayaas.com"],
-      action: "Send Email"
+      details: ["info@amayaas.com", "support@amayaas.com"],
+      action: "Send Email",
     },
     {
       icon: <Clock className="h-6 w-6 text-primary" />,
       title: "Business Hours",
-      details: ["Monday - Friday: 8:00 AM - 6:00 PM", "Saturday: 9:00 AM - 4:00 PM", "Sunday: Closed"],
-      action: "View Calendar"
-    }
+      details: [
+        "Monday - Friday: 8:00 AM - 6:00 PM",
+        "Saturday: 9:00 AM - 4:00 PM",
+        "Sunday: Closed",
+      ],
+      action: "View Calendar",
+    },
   ];
 
   return (
@@ -81,8 +94,9 @@ const Contact = () => {
             </span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your partition project? Contact our expert team for consultation, 
-            quotes, or any questions about our products and services.
+            Ready to start your partition project? Contact our expert team for
+            consultation, quotes, or any questions about our products and
+            services.
           </p>
         </div>
       </section>
@@ -95,9 +109,12 @@ const Contact = () => {
             <div>
               <Card className="shadow-soft">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-foreground">Send us a Message</CardTitle>
+                  <CardTitle className="text-2xl text-foreground">
+                    Send us a Message
+                  </CardTitle>
                   <CardDescription className="text-base">
-                    Fill out the form below and we'll get back to you within 24 hours
+                    Fill out the form below and we'll get back to you within 24
+                    hours
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -176,7 +193,12 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button type="submit" variant="hero" size="lg" className="w-full">
+                    <Button
+                      type="submit"
+                      variant="hero"
+                      size="lg"
+                      className="w-full"
+                    >
                       <Send className="h-4 w-4 mr-2" />
                       Send Message
                     </Button>
@@ -188,31 +210,42 @@ const Contact = () => {
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-foreground mb-6">Contact Information</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-6">
+                  Contact Information
+                </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                  We're here to help with all your gypsum partition needs. Reach out through 
-                  any of the channels below.
+                  We're here to help with all your gypsum partition needs. Reach
+                  out through any of the channels below.
                 </p>
               </div>
 
               <div className="grid grid-cols-1 gap-6">
                 {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover:shadow-soft transition-shadow duration-300">
+                  <Card
+                    key={index}
+                    className="hover:shadow-soft transition-shadow duration-300"
+                  >
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-4">
-                        <div className="flex-shrink-0">
-                          {info.icon}
-                        </div>
+                        <div className="flex-shrink-0">{info.icon}</div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
+                          <h3 className="font-semibold text-foreground mb-2">
+                            {info.title}
+                          </h3>
                           <div className="space-y-1">
                             {info.details.map((detail, detailIndex) => (
-                              <p key={detailIndex} className="text-sm text-muted-foreground">
+                              <p
+                                key={detailIndex}
+                                className="text-sm text-muted-foreground"
+                              >
                                 {detail}
                               </p>
                             ))}
                           </div>
-                          <Button variant="link" className="p-0 h-auto mt-2 text-primary">
+                          <Button
+                            variant="link"
+                            className="p-0 h-auto mt-2 text-primary"
+                          >
                             {info.action}
                           </Button>
                         </div>
@@ -225,22 +258,23 @@ const Contact = () => {
               {/* Quick Quote Card */}
               <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
                 <CardHeader>
-                  <CardTitle className="text-xl text-foreground">Need a Quick Quote?</CardTitle>
+                  <CardTitle className="text-xl text-foreground">
+                    Need a Quick Quote?
+                  </CardTitle>
                   <CardDescription>
                     Get an instant estimate for your project
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    For urgent quotes or immediate assistance, call our dedicated quote line.
+                    For urgent quotes or immediate assistance, call our
+                    dedicated quote line.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button variant="outline" className="flex-1">
                       Quick Quote Tool
                     </Button>
-                    <Button className="flex-1">
-                      Call: (555) 123-QUOTE
-                    </Button>
+                    <Button className="flex-1">Call: (555) 123-QUOTE</Button>
                   </div>
                 </CardContent>
               </Card>
@@ -264,44 +298,53 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">How long does installation take?</CardTitle>
+                <CardTitle className="text-lg">
+                  How long does installation take?
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Most residential projects take 2-5 days, while commercial projects vary based on size and complexity.
+                  Most residential projects take 2-5 days, while commercial
+                  projects vary based on size and complexity.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Do you provide free estimates?</CardTitle>
+                <CardTitle className="text-lg">
+                  Do you provide free estimates?
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Yes! We provide free, detailed estimates for all projects with no obligation.
+                  Yes! We provide free, detailed estimates for all projects with
+                  no obligation.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">What areas do you serve?</CardTitle>
+                <CardTitle className="text-lg">
+                  What areas do you serve?
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
-                  We serve the entire metropolitan area and surrounding regions within 100 miles.
-                </p>
+                <p className="text-muted-foreground">PAN India</p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Do you offer warranties?</CardTitle>
+                <CardTitle className="text-lg">
+                  Do you offer warranties?
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Yes, all our installations come with comprehensive warranties on materials and workmanship.
+                  Yes, all our installations come with comprehensive warranties
+                  on materials and workmanship.
                 </p>
               </CardContent>
             </Card>
@@ -316,8 +359,8 @@ const Contact = () => {
             Ready to Start Your Project?
           </h2>
           <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Don't wait - contact us today and take the first step towards transforming your space 
-            with professional gypsum partitions.
+            Don't wait - contact us today and take the first step towards
+            transforming your space with professional gypsum partitions.
           </p>
           <Button variant="accent" size="lg">
             Schedule Free Consultation
