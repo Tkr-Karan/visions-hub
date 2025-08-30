@@ -35,8 +35,8 @@ const About = () => {
       description: "Visionary leader with extensive experience in construction and partition systems."
     },
     {
-      name: "Hardik Sxena",
-      position: "Head of Operations",
+      name: "Hardik Saxena",
+      position: "Co-Founder",
       experience: "6+ years",
       description: "Operations expert ensuring smooth project execution and quality delivery."
     },
