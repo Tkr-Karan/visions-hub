@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { CheckCircle, Users, Award, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 import Layout from "@/components/Layout";
 
@@ -9,30 +16,34 @@ const Home = () => {
     {
       icon: <CheckCircle className="h-8 w-8 text-primary" />,
       title: "Premium Quality",
-      description: "High-grade gypsum materials ensuring durability and excellence in every project."
+      description:
+        "High-grade gypsum materials ensuring durability and excellence in every project.",
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
       title: "Expert Team",
-      description: "Certified professionals with years of experience in partition installation."
+      description:
+        "Certified professionals with years of experience in partition installation.",
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
       title: "Certified Solutions",
-      description: "Industry-standard certified products meeting all safety and quality requirements."
+      description:
+        "Industry-standard certified products meeting all safety and quality requirements.",
     },
     {
       icon: <Clock className="h-8 w-8 text-primary" />,
       title: "Timely Delivery",
-      description: "Committed to delivering projects on time without compromising on quality."
-    }
+      description:
+        "Committed to delivering projects on time without compromising on quality.",
+    },
   ];
 
   return (
     <Layout>
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-to-r from-primary/10 to-primary/5">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
@@ -45,16 +56,18 @@ const Home = () => {
             Solutions
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Transform your spaces with our premium gypsum partition systems. 
+            Transform your spaces with our premium gypsum partition systems.
             Professional installation, modern designs, and unmatched quality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="lg">
               Get Free Quote
             </Button>
-            <Button variant="outline" size="lg">
-              View Our Work
-            </Button>
+            <Link to="/projects">
+              <Button variant="outline" size="lg">
+                View Our Work
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -67,18 +80,19 @@ const Home = () => {
               Why Choose Amayaas?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We deliver exceptional gypsum partition solutions with a commitment to quality, 
-              innovation, and customer satisfaction.
+              We deliver exceptional gypsum partition solutions with a
+              commitment to quality, innovation, and customer satisfaction.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="text-center hover:shadow-soft transition-shadow duration-300">
+              <Card
+                key={index}
+                className="text-center hover:shadow-soft transition-shadow duration-300"
+              >
                 <CardHeader>
-                  <div className="mx-auto mb-4">
-                    {feature.icon}
-                  </div>
+                  <div className="mx-auto mb-4">{feature.icon}</div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -97,16 +111,28 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">30+</div>
-              <div className="text-lg text-muted-foreground">Projects Completed</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                30+
+              </div>
+              <div className="text-lg text-muted-foreground">
+                Projects Completed
+              </div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">1+</div>
-              <div className="text-lg text-muted-foreground">Years Experience</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                1+
+              </div>
+              <div className="text-lg text-muted-foreground">
+                Years Experience
+              </div>
             </div>
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">100%</div>
-              <div className="text-lg text-muted-foreground">Customer Satisfaction</div>
+              <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                100%
+              </div>
+              <div className="text-lg text-muted-foreground">
+                Customer Satisfaction
+              </div>
             </div>
           </div>
         </div>
@@ -119,8 +145,8 @@ const Home = () => {
             Ready to Transform Your Space?
           </h2>
           <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Contact us today for a free consultation and quote. Let our experts help you 
-            create the perfect partition solution for your needs.
+            Contact us today for a free consultation and quote. Let our experts
+            help you create the perfect partition solution for your needs.
           </p>
           <Button variant="accent" size="lg">
             Get Started Today
