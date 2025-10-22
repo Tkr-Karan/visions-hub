@@ -12,113 +12,12 @@ import {
   Users,
 } from "lucide-react";
 import Layout from "@/components/Layout";
+import { projects } from "@/lib/utils";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
-  // Sample project data - you can replace with real data
-  const projects = [
-    {
-      id: 1,
-      title: "Modern Office Partition System",
-      category: "Commercial",
-      location: "Mumbai, Maharashtra",
-      date: "December 2024",
-      team: "5 Members",
-      description:
-        "Complete office renovation with premium gypsum partitions, creating modern workspaces with excellent acoustics and aesthetics.",
-      images: [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop",
-      ],
-      video:
-        "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      features: [
-        "Acoustic Insulation",
-        "Fire Resistant",
-        "Modular Design",
-        "Easy Installation",
-      ],
-    },
-    {
-      id: 2,
-      title: "Residential Living Space Division",
-      category: "Residential",
-      location: "Delhi, NCR",
-      date: "November 2024",
-      team: "3 Members",
-      description:
-        "Elegant partition solution for a modern apartment, maximizing space utilization while maintaining privacy and style.",
-      images: [
-        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop",
-      ],
-      video:
-        "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4",
-      features: [
-        "Space Optimization",
-        "Sound Proofing",
-        "Custom Design",
-        "Quick Installation",
-      ],
-    },
-    {
-      id: 3,
-      title: "Healthcare Facility Partitions",
-      category: "Healthcare",
-      location: "Bangalore, Karnataka",
-      date: "October 2024",
-      team: "6 Members",
-      description:
-        "Specialized partition system for healthcare facility ensuring hygiene, privacy, and compliance with medical standards.",
-      images: [
-        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800&h=600&fit=crop",
-      ],
-      video:
-        "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_5mb.mp4",
-      features: [
-        "Hygienic Materials",
-        "Easy Cleaning",
-        "Privacy Control",
-        "Medical Grade",
-      ],
-    },
-    {
-      id: 4,
-      title: "Educational Institution Renovation",
-      category: "Educational",
-      location: "Pune, Maharashtra",
-      date: "September 2024",
-      team: "4 Members",
-      description:
-        "Complete classroom and office partition system for educational institution focusing on functionality and student comfort.",
-      images: [
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=600&fit=crop",
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=600&fit=crop",
-      ],
-      video:
-        "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-      features: [
-        "Student Friendly",
-        "Durable Construction",
-        "Flexible Layout",
-        "Cost Effective",
-      ],
-    },
-  ];
-
-  const categories = [
-    "All",
-    "Commercial",
-    "Residential",
-    "Healthcare",
-    "Educational",
-  ];
+  const categories = ["All", "Commercial", "Residential"];
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects =
@@ -154,7 +53,11 @@ const Projects = () => {
                 key={category}
                 variant={activeCategory === category ? "default" : "outline"}
                 onClick={() => setActiveCategory(category)}
-                className="transition-all duration-300"
+                className={`transition-all duration-300 ${
+                  activeCategory !== category
+                    ? "hover:bg-[#f1c886] hover:text-black hover:border-[#BD9E85]"
+                    : ""
+                }`}
               >
                 {category}
               </Button>
@@ -229,20 +132,13 @@ const Projects = () => {
                           </div>
 
                           <Tabs defaultValue="images" className="w-full">
-                            <TabsList className="grid w-full grid-cols-2">
+                            <TabsList className="grid w-full grid-cols-1">
                               <TabsTrigger
                                 value="images"
                                 className="flex items-center gap-2"
                               >
                                 <ImageIcon className="h-4 w-4" />
-                                Photos
-                              </TabsTrigger>
-                              <TabsTrigger
-                                value="video"
-                                className="flex items-center gap-2"
-                              >
-                                <Play className="h-4 w-4" />
-                                Video
+                                Project Photos
                               </TabsTrigger>
                             </TabsList>
 
@@ -259,22 +155,6 @@ const Projects = () => {
                                     />
                                   </div>
                                 ))}
-                              </div>
-                            </TabsContent>
-
-                            <TabsContent value="video" className="space-y-4">
-                              <div className="relative">
-                                <video
-                                  controls
-                                  className="w-full h-64 md:h-96 rounded-lg"
-                                  poster={project.images[0]}
-                                >
-                                  <source
-                                    src={project.video}
-                                    type="video/mp4"
-                                  />
-                                  Your browser does not support the video tag.
-                                </video>
                               </div>
                             </TabsContent>
                           </Tabs>
