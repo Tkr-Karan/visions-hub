@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,9 +13,16 @@ import {
 } from "lucide-react";
 import Layout from "@/components/Layout";
 import { projects } from "@/lib/utils";
+import { getProjectImages } from "@/lib/imageImports";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [projectImages, setProjectImages] = useState<Record<number, string[]>>(
+    {}
+  );
+  const [loadingImages, setLoadingImages] = useState<Record<number, boolean>>(
+    {}
+  );
 
   const categories = ["All", "Commercial", "Residential"];
   const [activeCategory, setActiveCategory] = useState("All");
@@ -24,6 +31,38 @@ const Projects = () => {
     activeCategory === "All"
       ? projects
       : projects.filter((project) => project.category === activeCategory);
+
+  // Load images for a specific project
+  const loadProjectImages = async (projectId: number) => {
+    if (projectImages[projectId] || loadingImages[projectId]) return;
+
+    setLoadingImages((prev) => ({ ...prev, [projectId]: true }));
+
+    try {
+      const images = await getProjectImages(projectId);
+      setProjectImages((prev) => ({ ...prev, [projectId]: images }));
+    } catch (error) {
+      console.error(`Failed to load images for project ${projectId}:`, error);
+    } finally {
+      setLoadingImages((prev) => ({ ...prev, [projectId]: false }));
+    }
+  };
+
+  // Load images when project is selected
+  useEffect(() => {
+    if (selectedProject) {
+      loadProjectImages(selectedProject);
+    }
+  }, [selectedProject]);
+
+  // Load first image for all visible projects on component mount and category change
+  useEffect(() => {
+    filteredProjects.forEach((project) => {
+      if (!projectImages[project.id] && !loadingImages[project.id]) {
+        loadProjectImages(project.id);
+      }
+    });
+  }, [filteredProjects, projectImages, loadingImages]);
 
   return (
     <Layout>
@@ -76,11 +115,28 @@ const Projects = () => {
                 className="group overflow-hidden hover:shadow-soft transition-all duration-300"
               >
                 <div className="relative">
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  {projectImages[project.id] &&
+                  projectImages[project.id].length > 0 ? (
+                    <img
+                      src={projectImages[project.id][0]}
+                      alt={project.title}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : loadingImages[project.id] ? (
+                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+                        <p className="text-gray-500">Loading...</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="w-full h-64 bg-gray-200 flex items-center justify-center">
+                      <div className="text-center">
+                        <ImageIcon className="h-12 w-12 mx-auto mb-2 text-gray-400" />
+                        <p className="text-gray-500">No image available</p>
+                      </div>
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <Dialog>
                       <DialogTrigger asChild>
@@ -143,19 +199,42 @@ const Projects = () => {
                             </TabsList>
 
                             <TabsContent value="images" className="space-y-4">
-                              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {project.images.map((image, index) => (
-                                  <div key={index} className="relative group">
-                                    <img
-                                      src={image}
-                                      alt={`${project.title} - Image ${
-                                        index + 1
-                                      }`}
-                                      className="w-full h-48 object-cover rounded-lg"
-                                    />
+                              {loadingImages[project.id] ? (
+                                <div className="flex items-center justify-center py-8">
+                                  <div className="text-center">
+                                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-2"></div>
+                                    <p className="text-muted-foreground">
+                                      Loading images...
+                                    </p>
                                   </div>
-                                ))}
-                              </div>
+                                </div>
+                              ) : projectImages[project.id] &&
+                                projectImages[project.id].length > 0 ? (
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                  {projectImages[project.id].map(
+                                    (image, index) => (
+                                      <div
+                                        key={index}
+                                        className="relative group"
+                                      >
+                                        <img
+                                          src={image}
+                                          alt={`${project.title} - Image ${
+                                            index + 1
+                                          }`}
+                                          className="w-full h-48 object-cover rounded-lg"
+                                        />
+                                      </div>
+                                    )
+                                  )}
+                                </div>
+                              ) : (
+                                <div className="text-center py-8">
+                                  <p className="text-muted-foreground">
+                                    No images available
+                                  </p>
+                                </div>
+                              )}
                             </TabsContent>
                           </Tabs>
 
